@@ -5,17 +5,157 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>JCWM — Financial Advisory</title>
 <meta name="description" content="JCWM Financial Advisory. Consultoria de valores mobiliários independente: planejamento financeiro e recomendações de investimento alinhadas exclusivamente aos interesses do cliente.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
 <meta property="og:type" content="website">
 <meta property="og:title" content="JCWM — Financial Advisory">
 <meta property="og:description" content="Consultoria de valores mobiliários independente. O que uma vida constrói merece método para durar.">
-<meta property="og:image" content="https://jcwm.com.br/img/cupula.jpg"><!-- TODO: confirmar domínio após registro -->
+<meta property="og:image" content="https://jcwm.com.br/obras/horizonte.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%230b1d30'/%3E%3Ctext x='32' y='42' font-family='Georgia,serif' font-size='26' fill='%23c3a878' text-anchor='middle' letter-spacing='1'%3EJC%3C/text%3E%3C/svg%3E">
-<link rel="stylesheet" href="styles.css">
 </head>
 <body>
+<style>
+/* Versão clara por decisão de design: cores fixas em qualquer tema. */
+:root, :root[data-theme="dark"], :root[data-theme="light"] {
+  --navy: #0b1d30; --navy-2: #12293f; --bronze: #a18457; --bronze-claro: #c3a878;
+  --bronze-texto: #7e633b;
+  --bg: #fbfaf7; --surface: #ffffff; --ink: #232a33; --mute: #55606b; --line: #e3dfd6;
+  --caps: "Cinzel", Copperplate, "Copperplate Gothic Light", "Times New Roman", serif;
+  --serif: "EB Garamond", "Iowan Old Style", Palatino, "Palatino Linotype", Georgia, serif;
+  --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; }
+html { scroll-behavior: smooth; }
+body { background: var(--bg); color: var(--ink); font-family: var(--sans); font-size: 1.0625rem; line-height: 1.7; -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1140px; margin: 0 auto; padding: 0 32px; }
+::selection { background: var(--bronze); color: #fff; }
+a { color: inherit; }
+a:focus-visible { outline: 2px solid var(--bronze); outline-offset: 3px; }
+
+.topbar { position: sticky; top: 0; z-index: 10; background: rgba(251,250,247,0.92); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+.topbar .wrap { display: flex; align-items: baseline; justify-content: space-between; gap: 24px; padding-top: 20px; padding-bottom: 18px; flex-wrap: wrap; }
+.wordmark { text-decoration: none; display: flex; align-items: baseline; gap: 16px; }
+.wordmark .nome { font-family: var(--caps); font-weight: 500; font-size: 1.35rem; letter-spacing: 0.28em; color: var(--navy); }
+.wordmark .descritor { font-size: 0.6rem; letter-spacing: 0.32em; text-transform: uppercase; color: var(--bronze-texto); }
+.menu { display: flex; gap: 30px; font-size: 0.86rem; }
+.menu a { text-decoration: none; color: var(--mute); letter-spacing: 0.04em; padding-bottom: 3px; background: linear-gradient(var(--bronze), var(--bronze)) no-repeat left bottom / 0 1px; transition: color 0.35s ease, background-size 0.35s ease; }
+.menu a:hover { color: var(--navy); background-size: 100% 1px; }
+
+.hero { padding: 140px 0 340px; background: linear-gradient(rgba(251,250,247,0.92), rgba(251,250,247,0.5) 45%, rgba(251,250,247,0)), url('obras/horizonte.jpg') center bottom / cover no-repeat, var(--bg); }
+.hero .wrap { display: grid; grid-template-columns: minmax(0, 640px); gap: 64px; }
+.hero .foto-hero { display: none; }
+.hero .eyebrow { font-size: 0.7rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--bronze); }
+.hero .filete { width: 64px; height: 1px; background: var(--bronze); margin: 26px 0 30px; transform-origin: left; }
+.hero h1 { font-family: var(--serif); font-weight: 500; font-size: clamp(2.1rem, 4.6vw, 3.2rem); line-height: 1.16; color: var(--navy); text-wrap: balance; }
+.hero .sub { margin-top: 30px; max-width: 33em; color: var(--mute); font-size: 1.05rem; }
+.hero .acoes { margin-top: 44px; display: flex; align-items: center; gap: 30px; flex-wrap: wrap; }
+.btn { display: inline-block; padding: 14px 34px; background: var(--navy); color: #f0ede7; text-decoration: none; font-size: 0.86rem; letter-spacing: 0.1em; text-transform: uppercase; border: 1px solid var(--navy); transition: background-color 0.35s ease, color 0.35s ease, border-color 0.35s ease; }
+.btn:hover { background: transparent; color: var(--navy); border-color: var(--bronze); }
+.link-quieto { font-size: 0.9rem; color: var(--mute); text-decoration: none; border-bottom: 1px solid rgba(161,132,87,0.5); padding-bottom: 2px; transition: color 0.35s ease, border-color 0.35s ease; }
+.link-quieto:hover { color: var(--navy); border-color: var(--bronze); }
+
+.foto-hero { margin: 0; height: 100%; }
+.foto-hero img { display: block; width: 100%; height: 100%; min-height: 680px; object-fit: cover; }
+.gravura { border: 0; background: transparent; padding: 0; }
+.gravura svg { display: block; width: 100%; height: auto; color: var(--navy); }
+.gravura figcaption { margin-top: 16px; font-size: 0.6rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--mute); text-align: center; }
+
+.entra { opacity: 0; transform: translateY(16px); animation: suba 0.9s cubic-bezier(0.22,0.61,0.36,1) forwards; }
+.entra-1 { animation-delay: 0.1s; }
+.entra-2 { animation-delay: 0.25s; }
+.entra-3 { animation-delay: 0.4s; }
+.entra-4 { animation-delay: 0.6s; }
+.entra-5 { animation-delay: 0.75s; }
+.filete.entra { transform: scaleX(0); animation-name: trace; }
+@keyframes suba { to { opacity: 1; transform: none; } }
+@keyframes trace { to { opacity: 1; transform: scaleX(1); } }
+
+section { padding: 96px 0; border-top: 1px solid var(--line); }
+.hero { border-top: 0; }
+.rotulo-secao { font-size: 0.7rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--bronze-texto); margin-bottom: 14px; }
+.titulo-secao { font-family: var(--serif); font-weight: 500; font-size: 2rem; color: var(--navy); text-wrap: balance; }
+.section-head { margin-bottom: 52px; }
+.section-head .apoio { margin-top: 12px; color: var(--mute); max-width: 40em; }
+.prosa { max-width: 41em; font-size: 1.08rem; }
+.colunas { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 44px 52px; margin-top: 56px; }
+.colunas h3 { font-family: var(--serif); font-weight: 600; font-size: 1.22rem; color: var(--navy); padding-top: 16px; border-top: 1px solid var(--bronze); }
+.colunas p { margin-top: 12px; font-size: 0.95rem; color: var(--mute); }
+
+.sobre-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 72px; align-items: start; }
+.foto-quadro { border: 0; background: transparent; padding: 0; }
+.foto-quadro img { display: block; width: 100%; height: auto; }
+.foto-quadro figcaption { margin-top: 12px; font-size: 0.6rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--mute); text-align: center; }
+.banda { margin: 0; }
+.banda img { display: block; width: 100%; height: clamp(260px, 38vw, 440px); object-fit: cover; }
+.banda figcaption { max-width: 1140px; margin: 0 auto; padding: 12px 32px 0; font-size: 0.6rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--mute); text-align: right; }
+@media (max-width: 900px) { .sobre-grid { grid-template-columns: 1fr; gap: 48px; } .sobre-grid .foto-quadro { max-width: 440px; } }
+
+.socios { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 48px 64px; } .socio h3 { font-family: var(--serif); font-weight: 600; font-size: 1.5rem; color: var(--navy); } .socio .cargo-socio { font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--bronze-texto); margin: 8px 0 16px; } .socio p { color: var(--mute); font-size: 0.98rem; max-width: 34em; }
+/* Seção sobre fundo navy (dobra escura) */
+.secao-navy { background: var(--navy); border-top: 0; }
+.secao-navy .titulo-secao { color: #f4f2ed; }
+.secao-navy .rotulo-secao { color: var(--bronze-claro); }
+.secao-navy .prosa { color: #b9c2cc; }
+.secao-navy .colunas h3 { color: #f0ede7; }
+.secao-navy .colunas p { color: #9aa6b1; }
+
+.interludio { background: var(--navy); color: #e8e9ea; padding: 96px 0; border-top: 0; position: relative; overflow: hidden; }
+.interludio .ondas { position: absolute; left: 0; right: 0; bottom: -8px; width: 100%; height: auto; color: var(--bronze); opacity: 0.35; pointer-events: none; }
+.interludio .wrap { position: relative; text-align: center; }
+.interludio .rotulo-secao { color: var(--bronze-claro); margin-bottom: 22px; }
+.interludio blockquote { font-family: var(--serif); font-weight: 500; font-size: clamp(1.4rem, 3vw, 1.9rem); line-height: 1.35; color: #f4f2ed; max-width: 26em; margin: 0 auto; text-wrap: balance; }
+
+.docs { border-top: 1px solid var(--line); }
+.doc { display: flex; justify-content: space-between; align-items: baseline; gap: 28px; padding: 26px 4px; border-bottom: 1px solid var(--line); text-decoration: none; flex-wrap: wrap; transition: padding-left 0.35s ease; }
+.doc:hover { padding-left: 14px; }
+.doc .titulo { font-family: var(--serif); font-size: 1.22rem; color: var(--navy); transition: color 0.35s ease; }
+.doc:hover .titulo { color: var(--bronze); }
+.doc .nota { font-size: 0.88rem; color: var(--mute); max-width: 44em; }
+.doc .formato { font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--bronze-texto); white-space: nowrap; }
+.base-legal { margin-top: 22px; font-size: 0.86rem; color: var(--mute); max-width: 46em; }
+
+.contato-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 36px 52px; }
+.contato-grid .rotulo { font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--bronze-texto); margin-bottom: 8px; }
+.contato-grid .valor { font-family: var(--serif); font-size: 1.18rem; color: var(--navy); }
+.contato-grid .valor a { text-decoration: none; border-bottom: 1px solid var(--line); transition: border-color 0.35s ease; }
+.contato-grid .valor a:hover { border-color: var(--bronze); }
+
+footer { background: var(--navy); color: #93a0ac; padding: 64px 0 72px; font-size: 0.84rem; line-height: 1.75; }
+footer .assinatura-rodape { font-family: var(--caps); font-size: 1rem; letter-spacing: 0.3em; color: #dfe3e7; margin-bottom: 28px; }
+footer .assinatura-rodape small { display: block; font-family: var(--sans); font-size: 0.56rem; letter-spacing: 0.32em; color: var(--bronze-claro); margin-top: 6px; text-transform: uppercase; }
+footer .legal { max-width: 58em; display: grid; gap: 14px; }
+
+.reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.8s cubic-bezier(0.22,0.61,0.36,1), transform 0.8s cubic-bezier(0.22,0.61,0.36,1); transition-delay: var(--d, 0s); }
+.reveal.visivel { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .entra, .filete.entra { animation: none; opacity: 1; transform: none; }
+  .reveal { opacity: 1; transform: none; transition: none; }
+  .doc, .doc .titulo, .btn, .menu a { transition: none; }
+}
+@media (max-width: 900px) {
+  .hero .wrap { grid-template-columns: 1fr; gap: 56px; }
+  .foto-hero img { height: 340px; min-height: 0; }
+  .hero .gravura { max-width: 420px; }
+}
+.foto-hero img { object-position: center top; }
+.obra-credito { margin-top: 12px; font-size: 0.6rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--mute); text-align: center; }
+.secao-navy--meridianos { background: linear-gradient(90deg, rgba(11,29,48,0.82) 30%, rgba(11,29,48,0.35)), url('obras/ruido-a-clareza.jpg') center / cover no-repeat, var(--navy); }
+.interludio--confluencia { background: linear-gradient(rgba(11,29,48,0.55), rgba(11,29,48,0.55)), url('obras/confluencia.jpg') center / cover no-repeat, var(--navy); }
+.quadro-navy { margin: 0; background: #fbfaf7; padding: 18px; box-shadow: 0 24px 60px -20px rgba(0,0,0,0.55); }
+.quadro-navy img { display: block; width: 100%; height: auto; }
+.quadro-navy figcaption { padding-top: 14px; font-size: 0.6rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--bronze-texto); text-align: center; }
+@media (max-width: 640px) {
+  .hero { padding: 68px 0 64px; }
+  section { padding: 64px 0; }
+  .interludio { padding: 72px 0; }
+  .menu { gap: 18px; font-size: 0.8rem; }
+  .wrap { padding: 0 22px; }
+}
+</style>
 
 <header class="topbar">
   <div class="wrap">
@@ -47,13 +187,10 @@
           <a class="btn" href="#contato">Agendar uma conversa</a><!-- TODO: quando existir e-mail/WhatsApp/Calendly reais, apontar o CTA direto pro canal -->
         </p>
       </div>
-      <figure class="foto-hero entra entra-5">
-        <img src="img/cupula.jpg" alt="Cúpula clássica vista de baixo, com afresco e claraboias">
-      </figure>
     </div>
   </section>
 
-  <section id="sobre" class="secao-navy">
+  <section id="sobre" class="secao-navy secao-navy--meridianos">
     <div class="wrap">
       <div class="section-head reveal">
         <p class="rotulo-secao">Sobre a JCWM</p>
@@ -148,14 +285,7 @@
     </div>
   </section>
 
-  <section class="interludio" aria-label="Compromisso da JCWM">
-    <svg class="ondas" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true">
-      <g fill="none" stroke="currentColor" stroke-width="1">
-        <path d="M0,30 q90,-14 180,0 t180,0 t180,0 t180,0 t180,0 t180,0 t180,0 t180,0" opacity="0.9"/>
-        <path d="M0,58 q90,-14 180,0 t180,0 t180,0 t180,0 t180,0 t180,0 t180,0 t180,0" opacity="0.6"/>
-        <path d="M0,86 q90,-14 180,0 t180,0 t180,0 t180,0 t180,0 t180,0 t180,0 t180,0" opacity="0.35"/>
-      </g>
-    </svg>
+  <section class="interludio interludio--confluencia" aria-label="Compromisso da JCWM">
     <div class="wrap reveal">
       <p class="rotulo-secao">Nosso compromisso</p>
       <blockquote>Sem comissões e sem produtos próprios: a única remuneração
@@ -172,28 +302,28 @@
         fevereiro de 2021, a JCWM mantém à disposição do público os documentos abaixo.</p>
       </div>
       <div class="docs">
-        <a class="doc reveal" style="--d:0s" href="docs/formulario-de-referencia.pdf">
+        <a class="doc reveal" style="--d:0s" href="#documentos">
           <span>
             <span class="titulo">Formulário de referência</span><br>
             <span class="nota">Informações cadastrais e operacionais, conforme o Anexo E da Resolução CVM 19/2021.</span>
           </span>
           <span class="formato">PDF</span>
         </a>
-        <a class="doc reveal" style="--d:0.08s" href="docs/codigo-de-etica.pdf">
+        <a class="doc reveal" style="--d:0.08s" href="#documentos">
           <span>
             <span class="titulo">Código de ética</span><br>
             <span class="nota">Deveres de conduta dos sócios, administradores e colaboradores da JCWM.</span>
           </span>
           <span class="formato">PDF</span>
         </a>
-        <a class="doc reveal" style="--d:0.16s" href="docs/regras-procedimentos-controles-internos.pdf">
+        <a class="doc reveal" style="--d:0.16s" href="#documentos">
           <span>
             <span class="titulo">Regras, procedimentos e controles internos</span><br>
             <span class="nota">Estrutura elaborada para o cumprimento da Resolução CVM 19/2021.</span>
           </span>
           <span class="formato">PDF</span>
         </a>
-        <a class="doc reveal" style="--d:0.24s" href="docs/politica-de-negociacao.pdf">
+        <a class="doc reveal" style="--d:0.24s" href="#documentos">
           <span>
             <span class="titulo">Política de negociação de valores mobiliários</span><br>
             <span class="nota">Regras aplicáveis às negociações de administradores, empregados, colaboradores e da própria empresa.</span>
@@ -207,10 +337,10 @@
   </section>
 
   <figure class="banda reveal">
-    <img src="img/rotunda.jpg" alt="Friso em baixo-relevo e arcada de janelas de uma rotunda clássica" loading="lazy">
+    <img src="obras/arcada.jpg" alt="Arcada — colunata em perspectiva, traço de gravura">
   </figure>
 
-  <section id="contato">
+  <section id="contato" style="border-top:0">
     <div class="wrap">
       <div class="section-head reveal">
         <p class="rotulo-secao">Contato</p>
@@ -223,7 +353,7 @@
         </div>
         <div class="reveal" style="--d:0.12s">
           <p class="rotulo">Telefone</p>
-          <p class="valor">(82) 0000-0000</p><!-- TODO: telefone real de atendimento -->
+          <p class="valor">(82) 0000-0000</p>
         </div>
         <div class="reveal" style="--d:0.24s">
           <p class="rotulo">Endereço</p>
@@ -242,7 +372,7 @@
       Financeira Ltda, CNPJ 67.557.832/0001-84, com sede na Av. Roberto Simonsen,
       949, Gruta de Lourdes, Maceió/AL, CEP 57.052-675.</p>
       <p>A JCWM exerce a atividade de consultoria de valores mobiliários nos termos
-      da Resolução CVM nº 19/2021.<!-- TODO: após autorização, incluir nº/data do ato declaratório da CVM --></p>
+      da Resolução CVM nº 19/2021.</p>
       <p>A prestação de serviço de consultoria de valores mobiliários não assegura
       nem sugere a existência de garantia de resultados futuros ou a isenção de risco
       para o investidor. Investimentos em valores mobiliários envolvem riscos,
