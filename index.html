@@ -583,10 +583,10 @@ footer .legal { max-width: 58em; display: grid; gap: 14px; }
   nos.forEach(function (o) { o.addEventListener("click", function () { ativa(+o.dataset.no, true); }); });
   function passo() { ativa((atual + 1) % 8, false); }
   if (autoLigado) timer = setInterval(passo, 5000);
-  if (giro) {
-    giro.addEventListener("mouseenter", function () { clearInterval(timer); });
-    giro.addEventListener("mouseleave", function () { if (autoLigado) { clearInterval(timer); timer = setInterval(passo, 5000); } });
-  }
+  nos.forEach(function (o) {
+    o.addEventListener("mouseenter", function () { clearInterval(timer); });
+    o.addEventListener("mouseleave", function () { if (autoLigado) { clearInterval(timer); timer = setInterval(passo, 5000); } });
+  });
   ativa(0, false);
 })();
 </script>
