@@ -158,6 +158,46 @@ footer .legal { max-width: 58em; display: grid; gap: 14px; }
 .selo { margin-top: 20px; font-size: 0.8rem; letter-spacing: 0.06em; color: var(--bronze-texto); }
 .assinatura-virada { margin-top: 34px; font-family: var(--serif); font-style: italic; font-size: 1.08rem; color: #c9d2da; }
 .passos .n { font-family: var(--serif); font-size: 2.3rem; line-height: 1; color: var(--bronze); margin-bottom: 10px; }
+/* ===== Método: roda 360° ===== */
+.metodo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; margin: 8px 0 64px; }
+.painel-dim { min-height: 180px; animation: jpainel 0.45s cubic-bezier(0.22,0.8,0.3,1); }
+.painel-dim h3 { font-family: var(--serif); font-weight: 600; font-size: 1.6rem; color: var(--navy); margin: 4px 0 14px; }
+.painel-dim p:last-child { color: var(--mute); max-width: 30em; font-size: 1.02rem; }
+@keyframes jpainel { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+.pills { display: none; }
+.giro-sel { position: relative; aspect-ratio: 1; width: 100%; max-width: 430px; margin: 0 auto; }
+.giro-fundo { position: absolute; inset: 0; width: 100%; height: 100%; }
+.orbita { animation: jgira 80s linear infinite; transform-origin: 50% 50%; transform-box: view-box; }
+@keyframes jgira { to { transform: rotate(360deg); } }
+.cometa { transition: transform 0.8s cubic-bezier(0.4,0,0.2,1); transform-box: view-box; transform-origin: center; }
+.nucleo360 { position: absolute; left: 50%; top: 50%; translate: -50% -50%; width: 118px; height: 118px; border-radius: 9999px; background: var(--navy); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; box-shadow: 0 24px 60px -30px rgba(11,29,48,0.55); animation: jrespira 4.5s ease-in-out infinite; }
+.nucleo360::before { content: ""; position: absolute; inset: -3px; border-radius: 9999px; background: conic-gradient(from 0deg, #c3a878, #12293f, #a18457, #c3a878); -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 2.5px), #000 calc(100% - 2.5px)); mask: radial-gradient(farthest-side, transparent calc(100% - 2.5px), #000 calc(100% - 2.5px)); animation: jgira 14s linear infinite; opacity: 0.8; }
+.n360 { font-family: var(--serif); font-size: 1.9rem; font-weight: 600; color: var(--bronze-claro); line-height: 1; }
+.n360-sub { margin-top: 5px; font-size: 9px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(240,237,231,0.75); line-height: 1.35; }
+@keyframes jrespira { 0%,100% { box-shadow: 0 24px 60px -30px rgba(11,29,48,0.55), 0 0 0 0 rgba(161,132,87,0.28); } 50% { box-shadow: 0 24px 60px -30px rgba(11,29,48,0.55), 0 0 0 14px rgba(161,132,87,0); } }
+.orb { position: absolute; translate: -50% -50%; width: 47px; height: 47px; border-radius: 9999px; background: var(--surface); border: 1px solid var(--line); box-shadow: 0 12px 28px -14px rgba(11,29,48,0.4); cursor: pointer; display: flex; align-items: center; justify-content: center; transition: border-color 0.35s ease, scale 0.35s ease, background-color 0.35s ease; padding: 0; }
+.orb-num { font-family: var(--serif); font-size: 14px; font-weight: 600; color: var(--bronze-texto); transition: color 0.35s ease; }
+.orb-rotulo { position: absolute; top: calc(100% + 7px); left: 50%; translate: -50% 0; font-size: 11px; letter-spacing: 0.04em; color: var(--mute); white-space: nowrap; pointer-events: none; transition: color 0.35s ease; }
+.orb:hover { border-color: var(--bronze); scale: 1.08; }
+.orb.ativo { background: var(--navy); border-color: var(--bronze); scale: 1.16; }
+.orb.ativo .orb-num { color: #f0ede7; }
+.orb.ativo .orb-rotulo { color: var(--navy); font-weight: 600; }
+.orb .cont { position: absolute; inset: -5px; width: calc(100% + 10px); height: calc(100% + 10px); rotate: -90deg; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }
+.orb .cont circle { fill: none; stroke: var(--bronze-claro); stroke-width: 2.5; stroke-linecap: round; stroke-dasharray: 141.4; stroke-dashoffset: 141.4; }
+.giro-sel.auto .orb.ativo .cont { opacity: 1; }
+.giro-sel.auto .orb.ativo .cont circle { animation: jcount 5s linear forwards; }
+@keyframes jcount { to { stroke-dashoffset: 0; } }
+@media (max-width: 900px) {
+  .metodo-grid { grid-template-columns: 1fr; gap: 32px; margin-bottom: 48px; }
+  .giro-sel { display: none; }
+  .pills { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 26px; }
+  .pill { border: 1px solid var(--line); background: var(--surface); padding: 7px 12px; font-size: 0.75rem; font-family: var(--sans); color: var(--mute); cursor: pointer; }
+  .pill.ativo { background: var(--navy); color: #f0ede7; border-color: var(--navy); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .orbita, .nucleo360, .nucleo360::before { animation: none; }
+  .painel-dim { animation: none; }
+}
 </style>
 
 <header class="topbar">
@@ -245,28 +285,139 @@ footer .legal { max-width: 58em; display: grid; gap: 14px; }
     <div class="wrap">
       <div class="section-head reveal">
         <p class="rotulo-secao">O método</p>
-        <h2 class="titulo-secao">Um caminho em três passos</h2>
-        <p class="apoio">Escopo, remuneração e periodicidade das informações são
-        definidos em contrato escrito, antes de qualquer recomendação.</p>
+        <h2 class="titulo-secao">A assessoria olha a sua carteira. Nós olhamos o círculo inteiro.</h2>
+        <p class="apoio">A assessoria de investimentos tradicional enxerga uma fatia da sua
+        vida — a carteira — e é remunerada pelo que acontece dentro dela. O planejamento
+        da JCWM parte de oito dimensões do seu patrimônio, olhadas juntas, porque nenhuma
+        decisão financeira vive isolada.</p>
       </div>
-      <div class="colunas passos" style="margin-top:0">
-        <div class="reveal" style="--d:0s">
+      <div class="metodo-grid reveal">
+        <div>
+          <div class="pills">
+            <button type="button" data-no="0" class="pill">01 · Fluxo de caixa</button>
+            <button type="button" data-no="1" class="pill">02 · Objetivos de vida</button>
+            <button type="button" data-no="2" class="pill">03 · Aposentadoria</button>
+            <button type="button" data-no="3" class="pill">04 · Investimentos</button>
+            <button type="button" data-no="4" class="pill">05 · Proteção</button>
+            <button type="button" data-no="5" class="pill">06 · Tributário</button>
+            <button type="button" data-no="6" class="pill">07 · Sucessão</button>
+            <button type="button" data-no="7" class="pill">08 · Alocação final</button>
+          </div>
+          <div data-painel="0" class="painel-dim">
+            <p class="rotulo-secao">Dimensão 01 de 08</p>
+            <h3>Fluxo de caixa</h3>
+            <p>Quanto entra, quanto sai e quanto sobra — a base de qualquer plano honesto.</p>
+          </div>
+          <div data-painel="1" style="display:none" class="painel-dim">
+            <p class="rotulo-secao">Dimensão 02 de 08</p>
+            <h3>Objetivos de vida</h3>
+            <p>Aposentadoria, imóveis, educação dos filhos: cada objetivo com prazo, valor e ritmo de poupança.</p>
+          </div>
+          <div data-painel="2" style="display:none" class="painel-dim">
+            <p class="rotulo-secao">Dimensão 03 de 08</p>
+            <h3>Aposentadoria</h3>
+            <p>O número que sustenta seu padrão de vida sem depender de ninguém — e o caminho até ele.</p>
+          </div>
+          <div data-painel="3" style="display:none" class="painel-dim">
+            <p class="rotulo-secao">Dimensão 04 de 08</p>
+            <h3>Investimentos</h3>
+            <p>A carteira a serviço do plano, não o contrário: alocação guiada pelo objetivo, nunca pelo produto do mês.</p>
+          </div>
+          <div data-painel="4" style="display:none" class="painel-dim">
+            <p class="rotulo-secao">Dimensão 05 de 08</p>
+            <h3>Proteção</h3>
+            <p>Seguros e reservas dimensionados para o que sua família precisa — nem desprotegido, nem pagando demais.</p>
+          </div>
+          <div data-painel="5" style="display:none" class="painel-dim">
+            <p class="rotulo-secao">Dimensão 06 de 08</p>
+            <h3>Tributário</h3>
+            <p>Cada decisão considerando o imposto, porque o retorno que importa é o líquido.</p>
+          </div>
+          <div data-painel="6" style="display:none" class="painel-dim">
+            <p class="rotulo-secao">Dimensão 07 de 08</p>
+            <h3>Sucessão</h3>
+            <p>O patrimônio chegando a quem você ama sem atrito e sem custo desnecessário.</p>
+          </div>
+          <div data-painel="7" style="display:none" class="painel-dim">
+            <p class="rotulo-secao">Dimensão 08 de 08</p>
+            <h3>Alocação final</h3>
+            <p>Tudo convergindo em recomendações claras, por escrito, com os porquês de cada escolha.</p>
+          </div>
+        </div>
+        <div class="giro-sel" aria-hidden="false">
+          <svg viewBox="0 0 100 100" class="giro-fundo" aria-hidden="true">
+            <g class="orbita"><circle cx="50" cy="50" r="47" fill="none" stroke="#a18457" stroke-width="0.25" stroke-opacity="0.35" stroke-dasharray="0.5 2.4"/></g>
+            <circle cx="50" cy="50" r="40" fill="none" stroke="#55606b" stroke-width="0.28" stroke-opacity="0.3"/>
+            <g class="cometa"><circle cx="50" cy="50" r="40" fill="none" stroke="#a18457" stroke-width="0.9" stroke-linecap="round" stroke-dasharray="20.9 230.4" stroke-dashoffset="20.9" transform="rotate(-90 50 50)"/></g>
+          </svg>
+          <div class="nucleo360"><span class="n360">360°</span><span class="n360-sub">a sua vida<br>inteira</span></div>
+            <button type="button" data-no="0" class="orb" style="left:50.0%;top:6.0%" aria-label="Fluxo de caixa">
+              <svg class="cont" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="22.5"/></svg>
+              <span class="orb-num">01</span>
+              <span class="orb-rotulo">Fluxo de caixa</span>
+            </button>
+            <button type="button" data-no="1" class="orb" style="left:81.1%;top:18.9%" aria-label="Objetivos de vida">
+              <svg class="cont" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="22.5"/></svg>
+              <span class="orb-num">02</span>
+              <span class="orb-rotulo">Objetivos</span>
+            </button>
+            <button type="button" data-no="2" class="orb" style="left:94.0%;top:50.0%" aria-label="Aposentadoria">
+              <svg class="cont" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="22.5"/></svg>
+              <span class="orb-num">03</span>
+              <span class="orb-rotulo">Aposentadoria</span>
+            </button>
+            <button type="button" data-no="3" class="orb" style="left:81.1%;top:81.1%" aria-label="Investimentos">
+              <svg class="cont" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="22.5"/></svg>
+              <span class="orb-num">04</span>
+              <span class="orb-rotulo">Investimentos</span>
+            </button>
+            <button type="button" data-no="4" class="orb" style="left:50.0%;top:94.0%" aria-label="Proteção">
+              <svg class="cont" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="22.5"/></svg>
+              <span class="orb-num">05</span>
+              <span class="orb-rotulo">Proteção</span>
+            </button>
+            <button type="button" data-no="5" class="orb" style="left:18.9%;top:81.1%" aria-label="Tributário">
+              <svg class="cont" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="22.5"/></svg>
+              <span class="orb-num">06</span>
+              <span class="orb-rotulo">Tributário</span>
+            </button>
+            <button type="button" data-no="6" class="orb" style="left:6.0%;top:50.0%" aria-label="Sucessão">
+              <svg class="cont" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="22.5"/></svg>
+              <span class="orb-num">07</span>
+              <span class="orb-rotulo">Sucessão</span>
+            </button>
+            <button type="button" data-no="7" class="orb" style="left:18.9%;top:18.9%" aria-label="Alocação final">
+              <svg class="cont" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="22.5"/></svg>
+              <span class="orb-num">08</span>
+              <span class="orb-rotulo">Alocação final</span>
+            </button>
+        </div>
+      </div>
+      <p class="rotulo-secao reveal" style="margin-top:24px">Da primeira conversa à rotina</p>
+      <div class="colunas passos reveal" style="margin-top:32px">
+        <div>
           <p class="n">1</p>
           <h3>Diagnóstico</h3>
-          <p>Entendemos sua situação patrimonial, seus objetivos de vida e seu
-          perfil de risco — antes de falar de qualquer investimento.</p>
+          <p>O 360° acima, mapeado de verdade: sua situação patrimonial, seus objetivos
+          e seu perfil de risco — antes de qualquer recomendação.</p>
         </div>
-        <div class="reveal" style="--d:0.12s">
+        <div>
           <p class="n">2</p>
           <h3>Plano</h3>
-          <p>Você recebe um plano financeiro e recomendações de alocação
-          personalizadas, fundamentadas e registradas por escrito.</p>
+          <p>Você recebe um plano financeiro e recomendações de alocação personalizadas,
+          fundamentadas e registradas por escrito.</p>
         </div>
-        <div class="reveal" style="--d:0.24s">
+        <div>
           <p class="n">3</p>
+          <h3>Implementação</h3>
+          <p>Plano bom é plano executado: acompanhamos você na implementação de cada
+          recomendação, nas instituições da sua escolha, até o papel virar realidade.</p>
+        </div>
+        <div>
+          <p class="n">4</p>
           <h3>Acompanhamento</h3>
-          <p>Revisões periódicas do plano e da carteira, com clareza sobre os
-          fundamentos de cada recomendação e os riscos envolvidos.</p>
+          <p>Revisões periódicas medem o progresso em relação aos seus objetivos e
+          ajustam a rota quando a vida muda.</p>
         </div>
       </div>
     </div>
@@ -382,5 +533,36 @@ footer .legal { max-width: 58em; display: grid; gap: 14px; }
 })();
 </script>
 
+
+<script>
+(function () {
+  var sec = document.getElementById("metodo");
+  if (!sec) return;
+  var reduz = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var nos = sec.querySelectorAll("[data-no]");
+  var pains = sec.querySelectorAll("[data-painel]");
+  var cometa = sec.querySelector(".cometa");
+  var giro = sec.querySelector(".giro-sel");
+  var atual = 0, timer = null, autoLigado = !reduz;
+  function ativa(i, manual) {
+    atual = i;
+    nos.forEach(function (o) { o.classList.toggle("ativo", +o.dataset.no === i); });
+    pains.forEach(function (p) { p.style.display = (+p.dataset.painel === i) ? "" : "none"; });
+    if (cometa) cometa.style.transform = "rotate(" + (i * 45) + "deg)";
+    if (giro) giro.classList.toggle("auto", !manual && autoLigado);
+    var anel = sec.querySelector(".orb.ativo .cont circle");
+    if (anel) { anel.style.animation = "none"; void anel.offsetWidth; anel.style.animation = ""; }
+    if (manual) { autoLigado = false; clearInterval(timer); }
+  }
+  nos.forEach(function (o) { o.addEventListener("click", function () { ativa(+o.dataset.no, true); }); });
+  function passo() { ativa((atual + 1) % 8, false); }
+  if (autoLigado) timer = setInterval(passo, 5000);
+  if (giro) {
+    giro.addEventListener("mouseenter", function () { clearInterval(timer); });
+    giro.addEventListener("mouseleave", function () { if (autoLigado) { clearInterval(timer); timer = setInterval(passo, 5000); } });
+  }
+  ativa(0, false);
+})();
+</script>
 </body>
 </html>
