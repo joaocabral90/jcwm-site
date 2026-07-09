@@ -155,6 +155,9 @@ footer .legal { max-width: 58em; display: grid; gap: 14px; }
   .menu { gap: 18px; font-size: 0.8rem; }
   .wrap { padding: 0 22px; }
 }
+.selo { margin-top: 20px; font-size: 0.8rem; letter-spacing: 0.06em; color: var(--bronze-texto); }
+.assinatura-virada { margin-top: 34px; font-family: var(--serif); font-style: italic; font-size: 1.08rem; color: #c9d2da; }
+.passos .n { font-family: var(--serif); font-size: 2.3rem; line-height: 1; color: var(--bronze); margin-bottom: 10px; }
 </style>
 
 <header class="topbar">
@@ -164,9 +167,9 @@ footer .legal { max-width: 58em; display: grid; gap: 14px; }
       <span class="descritor">Financial Advisory</span>
     </a>
     <nav class="menu" aria-label="Navegação principal">
-      <a href="#sobre">Sobre</a>
-      <a href="#quem-somos">Quem somos</a>
-      <a href="#servicos">Serviços</a>
+      <a href="#sobre">A diferença</a>
+      <a href="#metodo">Método</a>
+      <a href="#quem-somos">Quem conduz</a>
       <a href="#documentos">Documentos</a>
       <a href="#contato">Contato</a>
     </nav>
@@ -179,10 +182,11 @@ footer .legal { max-width: 58em; display: grid; gap: 14px; }
       <div>
         <div class="filete entra entra-2" aria-hidden="true"></div>
         <h1 class="entra entra-2">O que uma vida constrói merece método para durar.</h1>
-        <p class="sub entra entra-3">A JCWM presta consultoria financeira de forma
-        independente e fundamentada, considerando a situação financeira, os objetivos
-        e o perfil de cada cliente — sem distribuir produtos e sem receber remuneração
-        de instituições financeiras.</p>
+        <p class="sub entra entra-3">Consultoria de investimentos independente,
+        para quem construiu patrimônio e não pode mais errar. Orientação guiada
+        unicamente pelos seus objetivos — nunca por comissão sobre produtos.</p>
+        <p class="selo entra entra-3">CFP® — a certificação global de excelência
+        em planejamento financeiro · 15 anos de mercado</p>
         <p class="acoes entra entra-4">
           <a class="btn" href="#contato">Agendar uma conversa</a><!-- TODO: quando existir e-mail/WhatsApp/Calendly reais, apontar o CTA direto pro canal -->
         </p>
@@ -193,42 +197,22 @@ footer .legal { max-width: 58em; display: grid; gap: 14px; }
   <section id="sobre" class="secao-navy secao-navy--meridianos">
     <div class="wrap">
       <div class="section-head reveal">
-        <p class="rotulo-secao">Sobre a JCWM</p>
-        <h2 class="titulo-secao">Consultoria sem conflito de interesses</h2>
+        <p class="rotulo-secao">A diferença</p>
+        <h2 class="titulo-secao">De que lado está quem te aconselha?</h2>
       </div>
-      <div class="sobre-grid">
-        <p class="prosa reveal">A JCWM é uma sociedade dedicada à consultoria de
-        valores mobiliários, constituída para atender investidores que buscam
-        orientação técnica verdadeiramente independente. Não distribuímos produtos
-        nem recebemos comissão pela indicação de investimentos: nossa única fonte
-        de receita é o cliente — e é isso que garante que cada recomendação sirva
-        a um único interesse, o dele.</p>
-      </div>
-      <div class="colunas">
-        <div class="reveal" style="--d:0s">
-          <h3>Independência</h3>
-          <p>As recomendações são elaboradas de forma independente e fundamentada,
-          sem vínculo com bancos, corretoras ou emissores de produtos.</p>
-        </div>
-        <div class="reveal" style="--d:0.12s">
-          <h3>Interesse do cliente em primeiro lugar</h3>
-          <p>Atuamos com boa fé, diligência e lealdade, colocando os interesses
-          dos clientes acima dos nossos, conforme as regras de conduta da
-          Resolução CVM 19/2021.</p>
-        </div>
-        <div class="reveal" style="--d:0.24s">
-          <h3>Transparência</h3>
-          <p>Remuneração, escopo dos serviços e potenciais conflitos de interesse
-          são descritos por escrito, em contrato, antes do início do trabalho.</p>
-        </div>
-      </div>
+      <p class="prosa reveal">No modelo tradicional, quem recomenda investimentos é
+      remunerado por comissão de quem fabrica os produtos — e o conselho já nasce
+      em conflito. A JCWM elimina o conflito na raiz: não distribui produtos e não
+      recebe nada de instituições financeiras. Somos remunerados exclusivamente por
+      você — e, por isso, respondemos exclusivamente a você.</p>
+      <p class="assinatura-virada reveal">— João Cabral, CFP®, quinze anos assessorando patrimônio</p>
     </div>
   </section>
 
   <section id="quem-somos">
     <div class="wrap">
       <div class="section-head reveal">
-        <p class="rotulo-secao">Quem somos</p>
+        <p class="rotulo-secao">Quem conduz</p>
         <h2 class="titulo-secao">Dois ofícios, uma responsabilidade</h2>
       </div>
       <div class="socios">
@@ -236,10 +220,9 @@ footer .legal { max-width: 58em; display: grid; gap: 14px; }
           <!-- TODO v2: foto profissional do João -->
           <h3>João Cabral, CFP®</h3>
           <p class="cargo-socio">Diretor de Consultoria de Valores Mobiliários</p>
-          <p>Economista pela Universidade Federal de Alagoas, pós-graduado em
-          Finanças, Investimentos e Banking pela PUCRS e planejador financeiro
-          certificado CFP®. Construiu carreira de mais de quinze anos no mercado
-          financeiro, liderando times de assessoria de investimentos e a área de
+          <p>Economista pela Universidade Federal de Alagoas e pós-graduado em
+          Finanças, Investimentos e Banking pela PUCRS. Quinze anos de mercado
+          financeiro, com liderança de times de assessoria e da área de
           planejamento financeiro em um dos maiores escritórios de investimentos
           do país.</p>
         </div>
@@ -253,47 +236,42 @@ footer .legal { max-width: 58em; display: grid; gap: 14px; }
           <!-- TODO: completar bio com os dados que o Paulo enviar -->
         </div>
       </div>
+      <p class="reveal" style="margin-top:52px"><a class="btn" href="#contato">Agendar uma conversa</a></p>
     </div>
   </section>
 
-  <section id="servicos">
+  <section id="metodo">
     <div class="wrap">
       <div class="section-head reveal">
-        <p class="rotulo-secao">Serviços</p>
-        <h2 class="titulo-secao">Um método, três frentes</h2>
-        <p class="apoio">O escopo, a remuneração e a periodicidade das informações
-        prestadas são definidos em contrato escrito, firmado previamente com cada
-        cliente.</p>
+        <p class="rotulo-secao">O método</p>
+        <h2 class="titulo-secao">Um caminho em três passos</h2>
+        <p class="apoio">Escopo, remuneração e periodicidade das informações são
+        definidos em contrato escrito, antes de qualquer recomendação.</p>
       </div>
-      <div class="colunas" style="margin-top:0">
+      <div class="colunas passos" style="margin-top:0">
         <div class="reveal" style="--d:0s">
-          <h3>Planejamento financeiro</h3>
-          <p>Diagnóstico da situação patrimonial e organização das finanças em torno
-          dos objetivos de vida: aposentadoria, projetos e proteção da família.</p>
+          <p class="n">1</p>
+          <h3>Diagnóstico</h3>
+          <p>Entendemos sua situação patrimonial, seus objetivos de vida e seu
+          perfil de risco — antes de falar de qualquer investimento.</p>
         </div>
         <div class="reveal" style="--d:0.12s">
-          <h3>Consultoria de investimentos</h3>
-          <p>Análise da carteira e recomendações de alocação personalizadas,
-          adequadas ao perfil, à situação financeira e aos objetivos de cada cliente.</p>
+          <p class="n">2</p>
+          <h3>Plano</h3>
+          <p>Você recebe um plano financeiro e recomendações de alocação
+          personalizadas, fundamentadas e registradas por escrito.</p>
         </div>
         <div class="reveal" style="--d:0.24s">
-          <h3>Acompanhamento contínuo</h3>
-          <p>Revisões periódicas do plano e da carteira, com informações claras sobre
-          os fundamentos das recomendações e os riscos envolvidos.</p>
+          <p class="n">3</p>
+          <h3>Acompanhamento</h3>
+          <p>Revisões periódicas do plano e da carteira, com clareza sobre os
+          fundamentos de cada recomendação e os riscos envolvidos.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="interludio interludio--confluencia" aria-label="Compromisso da JCWM">
-    <div class="wrap reveal">
-      <p class="rotulo-secao">Nosso compromisso</p>
-      <blockquote>Sem comissões e sem produtos próprios: a única remuneração
-      da JCWM vem de quem ela serve.</blockquote>
-    </div>
-  </section>
-
-  <section id="documentos" style="border-top:0">
+  <section id="documentos">
     <div class="wrap">
       <div class="section-head reveal">
         <p class="rotulo-secao">Transparência regulatória</p>
