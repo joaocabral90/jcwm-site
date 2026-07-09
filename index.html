@@ -579,7 +579,7 @@ footer .legal { max-width: 58em; display: grid; gap: 14px; }
     if (giro) giro.classList.toggle("auto", !manual && autoLigado);
     var anel = sec.querySelector(".orb.ativo .cont circle");
     if (anel) { anel.style.animation = "none"; void anel.offsetWidth; anel.style.animation = ""; }
-    if (manual) { autoLigado = false; clearInterval(timer); }
+    if (manual) { clearInterval(timer); }
   }
   nos.forEach(function (o) { o.addEventListener("click", function () { ativa(+o.dataset.no, true); }); });
   function passo() { ativa((atual + 1) % 8, false); }
