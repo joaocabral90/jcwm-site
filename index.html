@@ -570,25 +570,33 @@ footer .legal { max-width: 58em; display: grid; gap: 14px; }
   var pains = sec.querySelectorAll("[data-painel]");
   var cometa = sec.querySelector(".cometa");
   var giro = sec.querySelector(".giro-sel");
-  var atual = 0, timer = null, autoLigado = !reduz;
-  function ativa(i, manual) {
+  var atual = 0, timer = null;
+  function reiniciaAnel() {
+    var anel = sec.querySelector(".orb.ativo .cont circle");
+    if (anel) { anel.style.animation = "none"; void anel.offsetWidth; anel.style.animation = ""; }
+  }
+  function ativa(i) {
     atual = i;
     nos.forEach(function (o) { o.classList.toggle("ativo", +o.dataset.no === i); });
     pains.forEach(function (p) { p.style.display = (+p.dataset.painel === i) ? "" : "none"; });
     if (cometa) cometa.style.transform = "rotate(" + (i * 45) + "deg)";
-    if (giro) giro.classList.toggle("auto", !manual && autoLigado);
-    var anel = sec.querySelector(".orb.ativo .cont circle");
-    if (anel) { anel.style.animation = "none"; void anel.offsetWidth; anel.style.animation = ""; }
-    if (manual) { clearInterval(timer); }
+    reiniciaAnel();
   }
-  nos.forEach(function (o) { o.addEventListener("click", function () { ativa(+o.dataset.no, true); }); });
-  function passo() { ativa((atual + 1) % 8, false); }
-  if (autoLigado) timer = setInterval(passo, 5000);
+  function pausa() { clearInterval(timer); timer = null; if (giro) giro.classList.remove("auto"); }
+  function retoma() {
+    if (reduz) return;
+    clearInterval(timer);
+    timer = setInterval(function () { ativa((atual + 1) % 8); }, 5000);
+    if (giro) giro.classList.add("auto");
+    reiniciaAnel();
+  }
   nos.forEach(function (o) {
-    o.addEventListener("mouseenter", function () { clearInterval(timer); });
-    o.addEventListener("mouseleave", function () { if (autoLigado) { clearInterval(timer); timer = setInterval(passo, 5000); } });
+    o.addEventListener("click", function () { ativa(+o.dataset.no); });
+    o.addEventListener("mouseenter", pausa);
+    o.addEventListener("mouseleave", retoma);
   });
-  ativa(0, false);
+  ativa(0);
+  retoma();
 })();
 </script>
 </body>
