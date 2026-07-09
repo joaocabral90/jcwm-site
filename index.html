@@ -159,10 +159,11 @@ footer .legal { max-width: 58em; display: grid; gap: 14px; }
 .assinatura-virada { margin-top: 34px; font-family: var(--serif); font-style: italic; font-size: 1.08rem; color: #c9d2da; }
 .passos .n { font-family: var(--serif); font-size: 2.3rem; line-height: 1; color: var(--bronze); margin-bottom: 10px; }
 /* ===== Método: roda 360° ===== */
-.metodo-grid { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 80px; align-items: center; margin: 0 0 64px; }
-.metodo-grid .section-head { margin-bottom: 0; }
-.giro-sel { margin-top: 8px; }
-.painel-dim { min-height: 140px; text-align: center; max-width: 30em; margin: 28px auto 0; animation: jpainel 0.45s cubic-bezier(0.22,0.8,0.3,1); }
+.metodo-grid { display: grid; grid-template-columns: 1.05fr 0.95fr; grid-template-rows: auto auto; column-gap: 80px; row-gap: 0; align-items: center; margin: 0 0 64px; }
+.metodo-grid .section-head { grid-column: 1; grid-row: 1; margin-bottom: 0; }
+.giro-col { grid-column: 2; grid-row: 1; }
+.painel-col { grid-column: 2; grid-row: 2; }
+.painel-dim { min-height: 120px; text-align: center; max-width: 30em; margin: 24px auto 0; animation: jpainel 0.45s cubic-bezier(0.22,0.8,0.3,1); }
 .painel-dim h3 { font-family: var(--serif); font-weight: 600; font-size: 1.4rem; color: var(--navy); margin: 4px 0 10px; }
 .painel-dim p:last-child { color: var(--mute); font-size: 0.98rem; }
 @keyframes jpainel { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
@@ -190,8 +191,10 @@ footer .legal { max-width: 58em; display: grid; gap: 14px; }
 .giro-sel.auto .orb.ativo .cont circle { animation: jcount 5s linear forwards; }
 @keyframes jcount { to { stroke-dashoffset: 0; } }
 @media (max-width: 900px) {
-  .metodo-grid { grid-template-columns: 1fr; gap: 32px; margin-bottom: 48px; }
-  .giro-sel { display: none; }
+  .metodo-grid { grid-template-columns: 1fr; row-gap: 28px; margin-bottom: 48px; }
+  .metodo-grid .section-head, .painel-col { grid-column: 1; }
+  .painel-col { grid-row: 2; }
+  .giro-col { display: none; }
   .pills { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 26px; }
   .pill { border: 1px solid var(--line); background: var(--surface); padding: 7px 12px; font-size: 0.75rem; font-family: var(--sans); color: var(--mute); cursor: pointer; }
   .pill.ativo { background: var(--navy); color: #f0ede7; border-color: var(--navy); }
@@ -296,7 +299,7 @@ footer .legal { max-width: 58em; display: grid; gap: 14px; }
           esse conjunto, em oito dimensões do seu patrimônio, que analisamos antes de
           qualquer recomendação.</p>
         </div>
-        <div class="reveal">
+        <div class="giro-col reveal">
           <div class="giro-sel" aria-hidden="false">
             <svg viewBox="0 0 100 100" class="giro-fundo" aria-hidden="true">
               <g class="orbita"><circle cx="50" cy="50" r="47" fill="none" stroke="#a18457" stroke-width="0.25" stroke-opacity="0.35" stroke-dasharray="0.5 2.4"/></g>
@@ -345,6 +348,8 @@ footer .legal { max-width: 58em; display: grid; gap: 14px; }
               <span class="orb-rotulo">Alocação final</span>
             </button>
           </div>
+        </div>
+        <div class="painel-col reveal">
           <div class="pills">
             <button type="button" data-no="0" class="pill">01 · Fluxo de caixa</button>
             <button type="button" data-no="1" class="pill">02 · Objetivos de vida</button>
@@ -356,42 +361,34 @@ footer .legal { max-width: 58em; display: grid; gap: 14px; }
             <button type="button" data-no="7" class="pill">08 · Alocação final</button>
           </div>
           <div data-painel="0" class="painel-dim">
-            <p class="rotulo-secao">Dimensão 01 de 08</p>
             <h3>Fluxo de caixa</h3>
             <p>Quanto entra, quanto sai e quanto sobra — a base de qualquer plano honesto.</p>
           </div>
           <div data-painel="1" style="display:none" class="painel-dim">
-            <p class="rotulo-secao">Dimensão 02 de 08</p>
             <h3>Objetivos de vida</h3>
             <p>Aposentadoria, imóveis, educação dos filhos: cada objetivo com prazo, valor e ritmo de poupança.</p>
           </div>
           <div data-painel="2" style="display:none" class="painel-dim">
-            <p class="rotulo-secao">Dimensão 03 de 08</p>
             <h3>Aposentadoria</h3>
             <p>O número que sustenta seu padrão de vida sem depender de ninguém — e o caminho até ele.</p>
           </div>
           <div data-painel="3" style="display:none" class="painel-dim">
-            <p class="rotulo-secao">Dimensão 04 de 08</p>
             <h3>Investimentos</h3>
             <p>A carteira a serviço do plano, não o contrário: alocação guiada pelo objetivo, nunca pelo produto do mês.</p>
           </div>
           <div data-painel="4" style="display:none" class="painel-dim">
-            <p class="rotulo-secao">Dimensão 05 de 08</p>
             <h3>Proteção</h3>
             <p>Seguros e reservas dimensionados para o que sua família precisa — nem desprotegido, nem pagando demais.</p>
           </div>
           <div data-painel="5" style="display:none" class="painel-dim">
-            <p class="rotulo-secao">Dimensão 06 de 08</p>
             <h3>Tributário</h3>
             <p>Cada decisão considerando o imposto, porque o retorno que importa é o líquido.</p>
           </div>
           <div data-painel="6" style="display:none" class="painel-dim">
-            <p class="rotulo-secao">Dimensão 07 de 08</p>
             <h3>Sucessão</h3>
             <p>O patrimônio chegando a quem você ama sem atrito e sem custo desnecessário.</p>
           </div>
           <div data-painel="7" style="display:none" class="painel-dim">
-            <p class="rotulo-secao">Dimensão 08 de 08</p>
             <h3>Alocação final</h3>
             <p>Tudo convergindo em recomendações claras, por escrito, com os porquês de cada escolha.</p>
           </div>
