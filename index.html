@@ -211,6 +211,9 @@ footer .legal { max-width: 58em; display: grid; gap: 14px; }
 .processo .colunas h3 { color: #f0ede7; border-top-color: rgba(161,132,87,0.65); }
 .processo .colunas p { color: #a7b2bd; }
 .processo .passos .n { color: var(--bronze-claro); }
+.processo .passos { grid-template-columns: repeat(4, 1fr); gap: 44px 40px; }
+@media (max-width: 1020px) { .processo .passos { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px) { .processo .passos { grid-template-columns: 1fr; } }
 </style>
 
 <header class="topbar">
