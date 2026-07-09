@@ -168,19 +168,19 @@ footer .legal { max-width: 58em; display: grid; gap: 14px; }
 .painel-dim p:last-child { color: var(--mute); font-size: 0.98rem; }
 @keyframes jpainel { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
 .pills { display: none; }
-.giro-sel { position: relative; aspect-ratio: 1; width: 100%; max-width: 430px; margin: 0 auto; }
+.giro-sel { position: relative; aspect-ratio: 1; width: 100%; max-width: 480px; margin: 0 auto; }
 .giro-fundo { position: absolute; inset: 0; width: 100%; height: 100%; }
 .orbita { animation: jgira 80s linear infinite; transform-origin: 50% 50%; transform-box: view-box; }
 @keyframes jgira { to { transform: rotate(360deg); } }
 .cometa { transition: transform 0.8s cubic-bezier(0.4,0,0.2,1); transform-box: view-box; transform-origin: center; }
 .nucleo360 { position: absolute; left: 50%; top: 50%; translate: -50% -50%; width: 118px; height: 118px; border-radius: 9999px; background: var(--navy); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; box-shadow: 0 24px 60px -30px rgba(11,29,48,0.55); animation: jrespira 4.5s ease-in-out infinite; }
-.nucleo360::before { content: ""; position: absolute; inset: -3px; border-radius: 9999px; background: conic-gradient(from 0deg, #c3a878, #12293f, #a18457, #c3a878); -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 2.5px), #000 calc(100% - 2.5px)); mask: radial-gradient(farthest-side, transparent calc(100% - 2.5px), #000 calc(100% - 2.5px)); animation: jgira 14s linear infinite; opacity: 0.8; }
+.nucleo360::before { content: ""; position: absolute; inset: -5px; border-radius: 9999px; border: 1px solid var(--bronze); opacity: 0.75; }
 .n360 { font-family: var(--serif); font-size: 1.9rem; font-weight: 600; color: var(--bronze-claro); line-height: 1; }
 .n360-sub { margin-top: 5px; font-size: 9px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(240,237,231,0.75); line-height: 1.35; }
 @keyframes jrespira { 0%,100% { box-shadow: 0 24px 60px -30px rgba(11,29,48,0.55), 0 0 0 0 rgba(161,132,87,0.28); } 50% { box-shadow: 0 24px 60px -30px rgba(11,29,48,0.55), 0 0 0 14px rgba(161,132,87,0); } }
 .orb { position: absolute; translate: -50% -50%; width: 47px; height: 47px; border-radius: 9999px; background: var(--surface); border: 1px solid var(--line); box-shadow: 0 12px 28px -14px rgba(11,29,48,0.4); cursor: pointer; display: flex; align-items: center; justify-content: center; transition: border-color 0.35s ease, scale 0.35s ease, background-color 0.35s ease; padding: 0; }
 .orb-num { font-family: var(--serif); font-size: 14px; font-weight: 600; color: var(--bronze-texto); transition: color 0.35s ease; }
-.orb-rotulo { position: absolute; top: calc(100% + 7px); left: 50%; translate: -50% 0; font-size: 11px; letter-spacing: 0.04em; color: var(--mute); white-space: nowrap; pointer-events: none; transition: color 0.35s ease; }
+.orb-rotulo { position: absolute; top: calc(100% + 8px); left: 50%; translate: -50% 0; font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--mute); white-space: nowrap; pointer-events: none; transition: color 0.35s ease; }
 .orb:hover { border-color: var(--bronze); scale: 1.08; }
 .orb.ativo { background: var(--navy); border-color: var(--bronze); scale: 1.16; }
 .orb.ativo .orb-num { color: #f0ede7; }
@@ -302,47 +302,47 @@ footer .legal { max-width: 58em; display: grid; gap: 14px; }
         <div class="giro-col reveal">
           <div class="giro-sel" aria-hidden="false">
             <svg viewBox="0 0 100 100" class="giro-fundo" aria-hidden="true">
-              <g class="orbita"><circle cx="50" cy="50" r="47" fill="none" stroke="#a18457" stroke-width="0.25" stroke-opacity="0.35" stroke-dasharray="0.5 2.4"/></g>
+              <g class="orbita"><circle cx="50" cy="50" r="47" fill="none" stroke="#a18457" stroke-width="0.25" stroke-opacity="0.28" stroke-dasharray="0.5 2.4"/></g>
               <circle cx="50" cy="50" r="40" fill="none" stroke="#55606b" stroke-width="0.28" stroke-opacity="0.3"/>
-              <g class="cometa"><circle cx="50" cy="50" r="40" fill="none" stroke="#a18457" stroke-width="0.9" stroke-linecap="round" stroke-dasharray="20.9 230.4" stroke-dashoffset="20.9" transform="rotate(-90 50 50)"/></g>
+              <g class="cometa"><circle cx="50" cy="50" r="40" fill="none" stroke="#a18457" stroke-width="0.7" stroke-linecap="round" stroke-dasharray="20.9 230.4" stroke-dashoffset="20.9" transform="rotate(-90 50 50)"/></g>
             </svg>
             <div class="nucleo360"><span class="n360">360°</span><span class="n360-sub">a sua vida<br>inteira</span></div>
-            <button type="button" data-no="0" class="orb" style="left:50.0%;top:6.0%" aria-label="Fluxo de caixa">
+            <button type="button" data-no="0" class="orb" style="left:50.0%;top:10.0%" aria-label="Fluxo de caixa">
               <svg class="cont" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="22.5"/></svg>
               <span class="orb-num">01</span>
               <span class="orb-rotulo">Fluxo de caixa</span>
             </button>
-            <button type="button" data-no="1" class="orb" style="left:81.1%;top:18.9%" aria-label="Objetivos de vida">
+            <button type="button" data-no="1" class="orb" style="left:78.3%;top:21.7%" aria-label="Objetivos de vida">
               <svg class="cont" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="22.5"/></svg>
               <span class="orb-num">02</span>
               <span class="orb-rotulo">Objetivos</span>
             </button>
-            <button type="button" data-no="2" class="orb" style="left:94.0%;top:50.0%" aria-label="Aposentadoria">
+            <button type="button" data-no="2" class="orb" style="left:90.0%;top:50.0%" aria-label="Aposentadoria">
               <svg class="cont" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="22.5"/></svg>
               <span class="orb-num">03</span>
               <span class="orb-rotulo">Aposentadoria</span>
             </button>
-            <button type="button" data-no="3" class="orb" style="left:81.1%;top:81.1%" aria-label="Investimentos">
+            <button type="button" data-no="3" class="orb" style="left:78.3%;top:78.3%" aria-label="Investimentos">
               <svg class="cont" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="22.5"/></svg>
               <span class="orb-num">04</span>
               <span class="orb-rotulo">Investimentos</span>
             </button>
-            <button type="button" data-no="4" class="orb" style="left:50.0%;top:94.0%" aria-label="Proteção">
+            <button type="button" data-no="4" class="orb" style="left:50.0%;top:90.0%" aria-label="Proteção">
               <svg class="cont" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="22.5"/></svg>
               <span class="orb-num">05</span>
               <span class="orb-rotulo">Proteção</span>
             </button>
-            <button type="button" data-no="5" class="orb" style="left:18.9%;top:81.1%" aria-label="Tributário">
+            <button type="button" data-no="5" class="orb" style="left:21.7%;top:78.3%" aria-label="Tributário">
               <svg class="cont" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="22.5"/></svg>
               <span class="orb-num">06</span>
               <span class="orb-rotulo">Tributário</span>
             </button>
-            <button type="button" data-no="6" class="orb" style="left:6.0%;top:50.0%" aria-label="Sucessão">
+            <button type="button" data-no="6" class="orb" style="left:10.0%;top:50.0%" aria-label="Sucessão">
               <svg class="cont" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="22.5"/></svg>
               <span class="orb-num">07</span>
               <span class="orb-rotulo">Sucessão</span>
             </button>
-            <button type="button" data-no="7" class="orb" style="left:18.9%;top:18.9%" aria-label="Alocação final">
+            <button type="button" data-no="7" class="orb" style="left:21.7%;top:21.7%" aria-label="Alocação final">
               <svg class="cont" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="22.5"/></svg>
               <span class="orb-num">08</span>
               <span class="orb-rotulo">Alocação final</span>
