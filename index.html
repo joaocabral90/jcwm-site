@@ -159,10 +159,12 @@ footer .legal { max-width: 58em; display: grid; gap: 14px; }
 .assinatura-virada { margin-top: 34px; font-family: var(--serif); font-style: italic; font-size: 1.08rem; color: #c9d2da; }
 .passos .n { font-family: var(--serif); font-size: 2.3rem; line-height: 1; color: var(--bronze); margin-bottom: 10px; }
 /* ===== Método: roda 360° ===== */
-.metodo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; margin: 8px 0 64px; }
-.painel-dim { min-height: 180px; animation: jpainel 0.45s cubic-bezier(0.22,0.8,0.3,1); }
-.painel-dim h3 { font-family: var(--serif); font-weight: 600; font-size: 1.6rem; color: var(--navy); margin: 4px 0 14px; }
-.painel-dim p:last-child { color: var(--mute); max-width: 30em; font-size: 1.02rem; }
+.metodo-grid { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 80px; align-items: center; margin: 0 0 64px; }
+.metodo-grid .section-head { margin-bottom: 0; }
+.giro-sel { margin-top: 8px; }
+.painel-dim { min-height: 140px; text-align: center; max-width: 30em; margin: 28px auto 0; animation: jpainel 0.45s cubic-bezier(0.22,0.8,0.3,1); }
+.painel-dim h3 { font-family: var(--serif); font-weight: 600; font-size: 1.4rem; color: var(--navy); margin: 4px 0 10px; }
+.painel-dim p:last-child { color: var(--mute); font-size: 0.98rem; }
 @keyframes jpainel { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
 .pills { display: none; }
 .giro-sel { position: relative; aspect-ratio: 1; width: 100%; max-width: 430px; margin: 0 auto; }
@@ -283,18 +285,66 @@ footer .legal { max-width: 58em; display: grid; gap: 14px; }
 
   <section id="metodo">
     <div class="wrap">
-      <div class="section-head reveal">
-        <p class="rotulo-secao">O método</p>
-        <h2 class="titulo-secao">Investimentos são uma parte. Nós olhamos para a sua vida financeira em 360°.</h2>
-        <p class="apoio">A assessoria de investimentos tradicional enxerga uma fatia da sua
-        vida — a carteira — e é remunerada pelo que acontece dentro dela. Decidir assim
-        é como aceitar um diagnóstico feito a partir de um único sintoma. Em finanças,
-        nada tem resposta certa isolada: tudo depende de um conjunto de fatores — e é
-        esse conjunto, em oito dimensões do seu patrimônio, que analisamos antes de
-        qualquer recomendação.</p>
-      </div>
-      <div class="metodo-grid reveal">
-        <div>
+      <div class="metodo-grid">
+        <div class="section-head reveal">
+          <p class="rotulo-secao">O método</p>
+          <h2 class="titulo-secao">Investimentos são uma parte. Nós olhamos para a sua vida financeira em 360°.</h2>
+          <p class="apoio">A assessoria de investimentos tradicional enxerga uma fatia da sua
+          vida — a carteira — e é remunerada pelo que acontece dentro dela. Decidir assim
+          é como aceitar um diagnóstico feito a partir de um único sintoma. Em finanças,
+          nada tem resposta certa isolada: tudo depende de um conjunto de fatores — e é
+          esse conjunto, em oito dimensões do seu patrimônio, que analisamos antes de
+          qualquer recomendação.</p>
+        </div>
+        <div class="reveal">
+          <div class="giro-sel" aria-hidden="false">
+            <svg viewBox="0 0 100 100" class="giro-fundo" aria-hidden="true">
+              <g class="orbita"><circle cx="50" cy="50" r="47" fill="none" stroke="#a18457" stroke-width="0.25" stroke-opacity="0.35" stroke-dasharray="0.5 2.4"/></g>
+              <circle cx="50" cy="50" r="40" fill="none" stroke="#55606b" stroke-width="0.28" stroke-opacity="0.3"/>
+              <g class="cometa"><circle cx="50" cy="50" r="40" fill="none" stroke="#a18457" stroke-width="0.9" stroke-linecap="round" stroke-dasharray="20.9 230.4" stroke-dashoffset="20.9" transform="rotate(-90 50 50)"/></g>
+            </svg>
+            <div class="nucleo360"><span class="n360">360°</span><span class="n360-sub">a sua vida<br>inteira</span></div>
+            <button type="button" data-no="0" class="orb" style="left:50.0%;top:6.0%" aria-label="Fluxo de caixa">
+              <svg class="cont" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="22.5"/></svg>
+              <span class="orb-num">01</span>
+              <span class="orb-rotulo">Fluxo de caixa</span>
+            </button>
+            <button type="button" data-no="1" class="orb" style="left:81.1%;top:18.9%" aria-label="Objetivos de vida">
+              <svg class="cont" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="22.5"/></svg>
+              <span class="orb-num">02</span>
+              <span class="orb-rotulo">Objetivos</span>
+            </button>
+            <button type="button" data-no="2" class="orb" style="left:94.0%;top:50.0%" aria-label="Aposentadoria">
+              <svg class="cont" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="22.5"/></svg>
+              <span class="orb-num">03</span>
+              <span class="orb-rotulo">Aposentadoria</span>
+            </button>
+            <button type="button" data-no="3" class="orb" style="left:81.1%;top:81.1%" aria-label="Investimentos">
+              <svg class="cont" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="22.5"/></svg>
+              <span class="orb-num">04</span>
+              <span class="orb-rotulo">Investimentos</span>
+            </button>
+            <button type="button" data-no="4" class="orb" style="left:50.0%;top:94.0%" aria-label="Proteção">
+              <svg class="cont" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="22.5"/></svg>
+              <span class="orb-num">05</span>
+              <span class="orb-rotulo">Proteção</span>
+            </button>
+            <button type="button" data-no="5" class="orb" style="left:18.9%;top:81.1%" aria-label="Tributário">
+              <svg class="cont" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="22.5"/></svg>
+              <span class="orb-num">06</span>
+              <span class="orb-rotulo">Tributário</span>
+            </button>
+            <button type="button" data-no="6" class="orb" style="left:6.0%;top:50.0%" aria-label="Sucessão">
+              <svg class="cont" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="22.5"/></svg>
+              <span class="orb-num">07</span>
+              <span class="orb-rotulo">Sucessão</span>
+            </button>
+            <button type="button" data-no="7" class="orb" style="left:18.9%;top:18.9%" aria-label="Alocação final">
+              <svg class="cont" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="22.5"/></svg>
+              <span class="orb-num">08</span>
+              <span class="orb-rotulo">Alocação final</span>
+            </button>
+          </div>
           <div class="pills">
             <button type="button" data-no="0" class="pill">01 · Fluxo de caixa</button>
             <button type="button" data-no="1" class="pill">02 · Objetivos de vida</button>
@@ -345,54 +395,6 @@ footer .legal { max-width: 58em; display: grid; gap: 14px; }
             <h3>Alocação final</h3>
             <p>Tudo convergindo em recomendações claras, por escrito, com os porquês de cada escolha.</p>
           </div>
-        </div>
-        <div class="giro-sel" aria-hidden="false">
-          <svg viewBox="0 0 100 100" class="giro-fundo" aria-hidden="true">
-            <g class="orbita"><circle cx="50" cy="50" r="47" fill="none" stroke="#a18457" stroke-width="0.25" stroke-opacity="0.35" stroke-dasharray="0.5 2.4"/></g>
-            <circle cx="50" cy="50" r="40" fill="none" stroke="#55606b" stroke-width="0.28" stroke-opacity="0.3"/>
-            <g class="cometa"><circle cx="50" cy="50" r="40" fill="none" stroke="#a18457" stroke-width="0.9" stroke-linecap="round" stroke-dasharray="20.9 230.4" stroke-dashoffset="20.9" transform="rotate(-90 50 50)"/></g>
-          </svg>
-          <div class="nucleo360"><span class="n360">360°</span><span class="n360-sub">a sua vida<br>inteira</span></div>
-            <button type="button" data-no="0" class="orb" style="left:50.0%;top:6.0%" aria-label="Fluxo de caixa">
-              <svg class="cont" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="22.5"/></svg>
-              <span class="orb-num">01</span>
-              <span class="orb-rotulo">Fluxo de caixa</span>
-            </button>
-            <button type="button" data-no="1" class="orb" style="left:81.1%;top:18.9%" aria-label="Objetivos de vida">
-              <svg class="cont" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="22.5"/></svg>
-              <span class="orb-num">02</span>
-              <span class="orb-rotulo">Objetivos</span>
-            </button>
-            <button type="button" data-no="2" class="orb" style="left:94.0%;top:50.0%" aria-label="Aposentadoria">
-              <svg class="cont" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="22.5"/></svg>
-              <span class="orb-num">03</span>
-              <span class="orb-rotulo">Aposentadoria</span>
-            </button>
-            <button type="button" data-no="3" class="orb" style="left:81.1%;top:81.1%" aria-label="Investimentos">
-              <svg class="cont" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="22.5"/></svg>
-              <span class="orb-num">04</span>
-              <span class="orb-rotulo">Investimentos</span>
-            </button>
-            <button type="button" data-no="4" class="orb" style="left:50.0%;top:94.0%" aria-label="Proteção">
-              <svg class="cont" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="22.5"/></svg>
-              <span class="orb-num">05</span>
-              <span class="orb-rotulo">Proteção</span>
-            </button>
-            <button type="button" data-no="5" class="orb" style="left:18.9%;top:81.1%" aria-label="Tributário">
-              <svg class="cont" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="22.5"/></svg>
-              <span class="orb-num">06</span>
-              <span class="orb-rotulo">Tributário</span>
-            </button>
-            <button type="button" data-no="6" class="orb" style="left:6.0%;top:50.0%" aria-label="Sucessão">
-              <svg class="cont" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="22.5"/></svg>
-              <span class="orb-num">07</span>
-              <span class="orb-rotulo">Sucessão</span>
-            </button>
-            <button type="button" data-no="7" class="orb" style="left:18.9%;top:18.9%" aria-label="Alocação final">
-              <svg class="cont" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="22.5"/></svg>
-              <span class="orb-num">08</span>
-              <span class="orb-rotulo">Alocação final</span>
-            </button>
         </div>
       </div>
       <p class="rotulo-secao reveal" style="margin-top:24px">Da primeira conversa à rotina</p>
