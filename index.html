@@ -216,6 +216,23 @@ footer .legal { max-width: 58em; display: grid; gap: 14px; }
 @media (max-width: 560px) { .processo .passos { grid-template-columns: 1fr; } }
 div.doc { cursor: default; }
 div.doc:hover { padding-left: 4px; }
+/* ===== Formulário de conversa ===== */
+.contato-duplo { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 72px; align-items: start; }
+.form-conversa { display: grid; gap: 22px; max-width: 34em; }
+.campo { display: grid; gap: 7px; }
+.campo label { font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--bronze-texto); }
+.campo input, .campo textarea { border: 1px solid var(--line); background: var(--surface); padding: 12px 14px; font-family: var(--sans); font-size: 1rem; color: var(--ink); border-radius: 0; }
+.campo input:focus, .campo textarea:focus { outline: none; border-color: var(--bronze); }
+.campo textarea { resize: vertical; }
+.campo-par { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.nota-privacidade { font-size: 0.8rem; color: var(--mute); }
+.form-conversa .btn { justify-self: start; cursor: pointer; }
+.form-sucesso { font-family: var(--serif); font-size: 1.05rem; color: var(--navy); border-left: 2px solid var(--bronze); padding-left: 14px; }
+.contato-lateral .rotulo { font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--bronze-texto); margin-bottom: 8px; }
+.contato-lateral .valor { font-family: var(--serif); font-size: 1.18rem; color: var(--navy); }
+.contato-lateral .valor a { text-decoration: none; border-bottom: 1px solid var(--line); }
+.contato-lateral .valor a:hover { border-color: var(--bronze); }
+@media (max-width: 900px) { .contato-duplo { grid-template-columns: 1fr; gap: 40px; } .campo-par { grid-template-columns: 1fr; } }
 </style>
 
 <header class="topbar">
@@ -502,15 +519,49 @@ div.doc:hover { padding-left: 4px; }
     <img src="obras/arcada.jpg" alt="Arcada: colunata em perspectiva, traço de gravura">
   </figure>
 
-  <section id="contato" style="border-top:0">
+  <section id="contato">
     <div class="wrap">
       <div class="section-head reveal">
         <p class="rotulo-secao">Contato</p>
         <h2 class="titulo-secao">Uma conversa antes de qualquer número</h2>
+        <p class="apoio">Deixe seus dados e dois horários em que prefere ser contatado.
+        Nós ligamos para você.</p>
       </div>
-      <div class="contato-grid">
-        <div class="reveal" style="--d:0s">
-          <p class="rotulo">E-mail</p>
+      <div class="contato-duplo">
+        <form class="form-conversa reveal" action="https://formsubmit.co/contato@jcwm.com.br" method="POST">
+          <input type="hidden" name="_subject" value="Novo pedido de conversa — site JCWM">
+          <input type="hidden" name="_next" value="https://jcwm.com.br/?enviado=1#contato">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+          <div class="campo">
+            <label for="f-nome">Nome</label>
+            <input type="text" id="f-nome" name="Nome" required autocomplete="name">
+          </div>
+          <div class="campo">
+            <label for="f-tel">Telefone (WhatsApp)</label>
+            <input type="tel" id="f-tel" name="Telefone" required autocomplete="tel" placeholder="(00) 00000-0000">
+          </div>
+          <div class="campo">
+            <label for="f-msg">Mensagem breve</label>
+            <textarea id="f-msg" name="Mensagem" rows="3" placeholder="Conte em poucas linhas o que você procura"></textarea>
+          </div>
+          <div class="campo-par">
+            <div class="campo">
+              <label for="f-h1">Horário preferido 1</label>
+              <input type="text" id="f-h1" name="Horario 1" placeholder="ex.: terça, 10h" required>
+            </div>
+            <div class="campo">
+              <label for="f-h2">Horário preferido 2</label>
+              <input type="text" id="f-h2" name="Horario 2" placeholder="ex.: quinta, 16h" required>
+            </div>
+          </div>
+          <p class="nota-privacidade">Seus dados são usados exclusivamente para retornarmos
+          seu contato. Nada de listas, nada de spam.</p>
+          <button type="submit" class="btn">Enviar e aguardar contato</button>
+          <p class="form-sucesso" hidden>Recebido. Entraremos em contato em um dos horários sugeridos.</p>
+        </form>
+        <div class="contato-lateral reveal" style="--d:0.15s">
+          <p class="rotulo">Se preferir, escreva direto</p>
           <p class="valor"><a href="mailto:contato@jcwm.com.br">contato@jcwm.com.br</a></p>
         </div>
       </div>
@@ -594,6 +645,18 @@ div.doc:hover { padding-left: 4px; }
   ativa(0);
   retoma();
 })();
+</script>
+<script>
+if (new URLSearchParams(location.search).get("enviado") === "1") {
+  var f = document.querySelector(".form-conversa");
+  if (f) {
+    Array.prototype.forEach.call(f.children, function (el) {
+      if (!el.classList || !el.classList.contains("form-sucesso")) el.style.display = "none";
+    });
+    var ok = f.querySelector(".form-sucesso");
+    if (ok) ok.hidden = false;
+  }
+}
 </script>
 </body>
 </html>
