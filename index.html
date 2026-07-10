@@ -672,5 +672,17 @@ if (new URLSearchParams(location.search).get("enviado") === "1") {
   });
 })();
 </script>
+<script>
+(function () {
+  var form = document.querySelector(".form-conversa");
+  if (!form) return;
+  var CRM = "https://script.google.com/macros/s/AKfycbzA8Z_6QvJVq7BEekvZ2h9TDrjCjS-IENrlFZSnfeE95xGMEfPp3Vng_eZV_aNKfYZOHg/exec";
+  form.addEventListener("submit", function () {
+    try {
+      navigator.sendBeacon(CRM, new URLSearchParams(new FormData(form)));
+    } catch (e) {}
+  });
+})();
+</script>
 </body>
 </html>
